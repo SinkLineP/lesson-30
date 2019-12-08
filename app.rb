@@ -31,18 +31,7 @@ end
 
 post '/visit' do 
 
-	@username = params[:username]
-	@phone = params[:phone]
-	@datetime = params[:datetime]
-	@barber = params[:barber]
-	@color = params[:color]
-
-	c = Clients.new
-    c.username = @username
-    c.phone = @phone
-    c.datetime = @datetime
-    c.barber = @barber
-    c.color = @color
+	c = Clients.new params[:client]
     c.save
 
     
