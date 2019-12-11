@@ -9,7 +9,7 @@ require 'sqlite3'
 set :database, {adapter: "sqlite3", database: "barber.db"}
 
 class Clients < ActiveRecord::Base
-  validates :username, presence: true
+  validates :username, presence: true, length: { minimum: 3 }
   validates :phone, presence: true
   validates :datetime, presence: true
   validates :color, presence: true
