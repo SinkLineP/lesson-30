@@ -1,16 +1,18 @@
-#encoding: utf-8
-require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
+
 require 'sinatra/activerecord'
+require 'active_record'
+require 'sqlite3'
+
 
 set :database, {adapter: "sqlite3", database: "barber.db"}
 
 class Clients < ActiveRecord::Base
-	# validates :username, presence: true
-	# validates :phone, presence: true
-	# validates :datetime, presence: true
-	# validates :color, presence: true
+  validates :username, presence: true
+  validates :phone, presence: true
+  validates :datetime, presence: true
+  validates :color, presence: true
 end
 
 class Barbers < ActiveRecord::Base
@@ -21,8 +23,6 @@ end
 
 before do
 	@barbers = Barbers.all
-	@clients = Clients.all
-	@contacts = Contacts.all	
 end
 
 get '/' do
@@ -30,41 +30,41 @@ get '/' do
 end
 
 get '/visit' do
+	@c = Clients.new
+
 	erb :visit
 end
 
-post '/visit' do 
+# post '/visit' do 
 
-	c = Clients.new params[:client]
-	c.save
-    if c.save
-		erb "<h2>Спасибо вы записались!!</h2>"
-	else
-		erb "<h2>Ошибка</h2>"
-	end
-end
+# 	c = Clients.new params[:client]
+# 	c.save
+#     if c.save
+# 		erb "<h2>Спасибо вы записались!!</h2>"
+# 	else
+# 		erb "<h2>Ошибка</h2>"
+# 	end
+# end
+#------------------------------------------------------
 
-get '/contacts' do
-	erb :contacts
-end
+post '/visit' do
+  @c = Clients.new params[:client]
+  @c.save
 
-post '/contacts' do
-
-	@email = params[:email]
-	@message = params[:message]
-
-	c = Contacts.new
-    c.email = @email
-    c.message = @message
-	c.save
-
-	erb "<h2>Спасибо за ваш отзыв, мы вам ответим в скором времени.</h2>"
+  if @c.save
+    erb "<p>Thank you!</p>"
+  else
+    @error = 'Поле не может быть пустым'
+    erb :visit
+  end
 
 end
 
+get '/clients' do
+  @clients = Clients.order('created_at DESC')
 
-
-
+  erb :clients
+end
 
 
 

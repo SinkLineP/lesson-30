@@ -24,13 +24,13 @@
     <% @barbers.each do |item| %>
       <option <%= @barber == item['name'] ? 'selected' : '' %>><%= item['name'] %></option>
     <% end %>
- -->
+ </select>-->
 
-  </select><br>
+  <br>
 
   <div class="form-group">
     <label>В какие цвета хотите себя окрасить: </label>
-		<select id="color" name="color">
+		<select id="color" name="client[color]">
 		  <option value="#7bd148">Green</option>
 		  <option value="#5484ed">Bold blue</option>
 		  <option value="#a4bdfc">Blue</option>

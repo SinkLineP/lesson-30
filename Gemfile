@@ -1,11 +1,15 @@
 source "https://rubygems.org"
 
 gem "sinatra"
-gem "sqlite3"
+gem "sinatra-contrib"
+gem 'sqlite3', '~> 1.3.6'
 gem "activerecord"
 gem "sinatra-activerecord"
-gem "sinatra-contrib"
 
-group :development do 
-	gem "tux"
+gem 'nokogiri'
+gem 'rack', '~> 2.0.1'
+gem 'rspec'
+gem 'bootstrap', '~> 4.3.1'
+group :development do
+  gem "tux"
 end

@@ -1,25 +1,30 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (6.0.1)
-      activesupport (= 6.0.1)
-    activerecord (6.0.1)
-      activemodel (= 6.0.1)
-      activesupport (= 6.0.1)
-    activesupport (6.0.1)
-      concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (>= 0.7, < 2)
+    activemodel (4.2.11.1)
+      activesupport (= 4.2.11.1)
+      builder (~> 3.1)
+    activerecord (4.2.11.1)
+      activemodel (= 4.2.11.1)
+      activesupport (= 4.2.11.1)
+      arel (~> 6.0)
+    activesupport (4.2.11.1)
+      i18n (~> 0.7)
       minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-      zeitwerk (~> 2.2)
+    arel (6.0.4)
     backports (3.15.0)
     bond (0.5.1)
+    builder (3.2.3)
     concurrent-ruby (1.1.5)
-    i18n (1.7.0)
+    i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     minitest (5.13.0)
     multi_json (1.14.1)
     mustermann (1.0.3)
+    protected_attributes (1.1.4)
+      activemodel (>= 4.0.1, < 5.0)
     rack (2.0.7)
     rack-protection (2.0.7)
       rack
@@ -58,14 +63,13 @@ GEM
       sinatra (>= 1.2.1)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    zeitwerk (2.2.2)
 
 PLATFORMS
   ruby
-  x64-mingw32
 
 DEPENDENCIES
   activerecord
+  protected_attributes
   sinatra
   sinatra-activerecord
   sinatra-contrib
