@@ -67,6 +67,7 @@ get '/clients' do
 end
 
 get '/barber/:id' do 
+	@barber = Barbers.find(params[:id])
 	erb :barber
 end
 
