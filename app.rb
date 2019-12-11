@@ -54,7 +54,7 @@ post '/visit' do
   if @c.save
     erb "<p>Thank you!</p>"
   else
-    @error = 'Поле не может быть пустым'
+    @error = @c.errors.full_messages.first
     erb :visit
   end
 
@@ -66,6 +66,8 @@ get '/clients' do
   erb :clients
 end
 
-
+get '/barber/:id' do 
+	erb :barber
+end
 
 
