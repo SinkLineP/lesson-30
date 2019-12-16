@@ -12,6 +12,7 @@ class Clients < ActiveRecord::Base
   validates :username, presence: true, length: { minimum: 3 }
   validates :phone, presence: true
   validates :datetime, presence: true
+  validates :barber, presence: true
   validates :color, presence: true
 end
 
@@ -21,8 +22,14 @@ end
 class Contacts < ActiveRecord::Base
 end
 
+class Comments < ActiveRecord::Base
+end
+
+
+
 before do
 	@barbers = Barbers.all
+  @clients = Clients.all
 end
 
 get '/' do
@@ -31,7 +38,6 @@ end
 
 get '/visit' do
 	@c = Clients.new
-
 	erb :visit
 end
 
@@ -67,7 +73,8 @@ get '/clients' do
 end
 
 get '/barber/:id' do 
-	@barber = Barbers.find(params[:id])
+	@barbers = Barbers.find(params[:id])
+  @comments = Comments.where(barbers_id: @barbers.id).order(created_at: :desc)
 	erb :barber
 end
 
@@ -80,3 +87,13 @@ get '/clients/:id' do
 	@client = Clients.find(params[:id])
 	erb :client
 end
+
+post '/comment/:id' do
+  num = Barbers.find(params[:id]) 
+  @comments = Comments.new params[:comment]
+  @comments.barbers_id = num.id
+  @comments.save
+
+  erb "Спасибо большое, за ваш отзыв."
+end
+

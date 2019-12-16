@@ -1,4 +1,11 @@
 <h2>Client page:</h2>
-<p>Имя: <%= @client.username %></p>
-<p>Телефон: <%= @client.phone %></p>
-<p>Дата и время: <%= @client.datetime %></p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Имя: <%= @client.username %></th>
+      <th scope="col">Телефон: <%= @client.phone %></th>
+      <th scope="col">Парикмахер: <%= @client.barber %></th>
+      <th scope="col">Дата и время: <%= @client.datetime %></th>
+    </tr>
+  </thead>

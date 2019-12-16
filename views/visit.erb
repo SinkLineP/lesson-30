@@ -2,8 +2,9 @@
 
 <h2>Записаться</h2>
 <p>На этой странице вы можете записатся к нам Barber Shop</p>
-
-<form action="/visit" method="POST" role="form">
+""
+<%@clients.each do |c|%>
+<form action="/visit" method="POST" role="form" style="background-color: <%=c.color%>">
 
   <div class="form-group">
     <label>Ваше имя:</label>
@@ -20,13 +21,14 @@
     <input id="datetimepicker" name="client[datetime]" type="text" class="form-control" placeholder="Введите дату и время" value="<%= @datetime %>">
   </div>
 
-<!--   <label>Выберите парикмахера:</label>
-  <select name="barber" class="custom-select form-control">
+  <label>Выберите парикмахера:</label>
+  <select name="client[barber]" class="custom-select form-control" placeholder="Выберите парикмахера">
+    <option value="">-={Парикмахер не выбран}=-</option>
 
     <% @barbers.each do |item| %>
       <option <%= @barber == item['name'] ? 'selected' : '' %>><%= item['name'] %></option>
     <% end %>
- </select>-->
+  </select>
 
   <br>
 
@@ -53,7 +55,7 @@
   <button type="submit" class="btn btn-success">Записаться</button>
 
 </form>
-
+<%end%>
 <script type="text/javascript">
 $(function(){
 	$('#color').simplecolorpicker();
