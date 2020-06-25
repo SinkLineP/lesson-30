@@ -53,7 +53,7 @@ GEM
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
     popper_js (1.14.5)
-    rack (2.0.7)
+    rack (2.1.4)
     rack-protection (2.0.7)
       rack
     rack-test (1.1.0)
@@ -141,7 +141,7 @@ DEPENDENCIES
   activerecord
   bootstrap (~> 4.3.1)
   nokogiri
-  rack (~> 2.0.1)
+  rack (~> 2.1.4)
   rspec
   sinatra
   sinatra-activerecord
