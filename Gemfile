@@ -7,9 +7,9 @@ gem "activerecord"
 gem "sinatra-activerecord"
 
 gem 'nokogiri'
-gem 'rack', '~> 2.0.1'
+gem 'rack', '~> 2.2.4'
 gem 'rspec'
-gem 'bootstrap', '~> 4.3.1'
+gem 'bootstrap', '~> 5.1.3'
 group :development do
   gem "tux"
 end
